@@ -1,0 +1,3 @@
+### GET request with User info
+GET https://localhost:10000/index
+Accept: application/json

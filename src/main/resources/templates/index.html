@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--引入命名空间-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1" width="60%" align="center">
+        <tr>
+            <td>编号</td>
+            <td>姓名</td>
+            <td>地址</td>
+        </tr>
+        <tr th:each="user:${list}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.address}"></td>
+        </tr>
+    </table>
+</body>
+</html>
