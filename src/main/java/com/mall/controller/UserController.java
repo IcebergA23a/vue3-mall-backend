@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 /**
- * @Desc 用户
- * @Author bingshan
- * @Date 2025/12/28 18:51
+ * 用户
+ * @author bingshan
+ * @date 2025/12/28 18:51
  */
 @Controller
 public class UserController {
@@ -23,6 +23,7 @@ public class UserController {
                 new User(3, "charlie", "charlie123", "上海")
         );
         model.addAttribute("list", userList);
+        model.addAttribute("name", "地球");
         return "index";
     }
 }

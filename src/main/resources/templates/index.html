@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <!--引入命名空间-->
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+<!--    Thymeleaf支持在JavaScript中直接获取Model中存储的变量-->
+    <script th:inline="javascript">
+        var name= [[${name}]]
+        console.log(name);
+    </script>
 </head>
 <body>
     <table border="1" width="60%" align="center">
