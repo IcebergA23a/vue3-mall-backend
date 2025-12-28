@@ -2,3 +2,7 @@
 ### GET request with Exception info
 GET http://localhost:10000/exceptionMethod
 Accept: application/json
+
+### GET request with NullPointerException
+GET http://localhost:10000/exceptionNullPointer
+Accept: application/json
