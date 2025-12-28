@@ -1,0 +1,12 @@
+## 测试不同数据类型返回的JSON
+### GET request with User info
+GET http://localhost:10000/json/user
+Accept: application/json
+
+### GET request with User info
+GET http://localhost:10000/json/list
+Accept: application/json
+
+### GET request with User info
+GET http://localhost:10000/json/map
+Accept: application/json
