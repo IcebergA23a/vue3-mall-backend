@@ -47,4 +47,13 @@ public class ExceptionController {
      return "error";
      }
 
+    @RequestMapping("/exceptionSimpleMappingExceptionResolver")
+    public String exceptionSimpleMappingExceptionResolver(Model model) {
+        model.addAttribute("msg", "没有抛出异常");
+
+        int[] arr = new int[3];
+        arr[30] = 10;
+        return "index";
+    }
+
 }

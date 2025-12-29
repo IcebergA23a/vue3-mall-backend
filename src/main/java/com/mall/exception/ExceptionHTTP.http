@@ -6,3 +6,7 @@ Accept: application/json
 ### GET request with NullPointerException
 GET http://localhost:10000/exceptionNullPointer
 Accept: application/json
+
+### GET request with SimpleMappingExceptionResolver
+GET http://localhost:10000/exceptionSimpleMappingExceptionResolver
+Accept: application/json
