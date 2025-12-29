@@ -1,0 +1,11 @@
+### GET request with File upload
+GET http://localhost:10000/upload.html
+Accept: application/json
+
+### GET request with Multile File upload
+GET http://localhost:10000/upload.html
+Accept: application/json
+
+### GET request with Multile File download
+GET http://localhost:10000/file/download
+Accept: application/json

@@ -13,7 +13,7 @@ import java.util.List;
  * @author bingshan
  * @date 2025/12/28 18:51
  */
-@Controller
+@Controller("/user")
 public class UserController {
 
     @GetMapping("/index")

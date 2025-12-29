@@ -12,7 +12,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //需要拦截的路径，/** 表示需要拦截所有请求
-        String[] addPathPatterns={"/**"};
+        //String[] addPathPatterns={"/**"};
+        String[] addPathPatterns = {"/user/**"};
+
         //不需要拦截的路径
         String [] excludePathPaterns={
                 "/login.html",
