@@ -4,6 +4,7 @@ import com.mall.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -25,5 +26,14 @@ public class UserController {
         model.addAttribute("list", userList);
         model.addAttribute("name", "地球");
         return "index";
+    }
+
+    /**
+     * 测试拦截器
+     * @return
+     */
+    @GetMapping("/getUser")
+    public String getUser(Model model) {
+        return "hello";
     }
 }
