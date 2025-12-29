@@ -25,8 +25,8 @@ public class ExceptionController {
         return "index";
     }
 
-    @RequestMapping("/exceptionNullPointer")
-    public String exceptionNullPointer(Model model) {
+    @RequestMapping("/exceptionByExceptionHandler")
+    public String exceptionByExceptionHandler(Model model) {
         model.addAttribute("msg", "没有抛出异常");
         Object obj = null;
         obj.toString();
@@ -42,7 +42,7 @@ public class ExceptionController {
      */
      @ExceptionHandler(value = {NullPointerException.class})
      public String nullPointerExceptionHandle(Model model, Exception e) {
-     model.addAttribute("msg", "@ExceptionHandler: " + e.getMessage());
+     model.addAttribute("msg", "@ExceptionHandler 注解处理: " + e.getClass() + " 局部异常");
      log.info(e.getMessage());
      return "error";
      }
@@ -53,6 +53,16 @@ public class ExceptionController {
 
         int[] arr = new int[3];
         arr[30] = 10;
+        return "index";
+    }
+
+    @RequestMapping("/exceptionByHandlerExceptionResolver")
+    public String exceptionByHandlerExceptionResolver(Model model) {
+        model.addAttribute("msg", "没有抛出异常");
+
+        int a = Integer.valueOf("xx");
+        System.out.println("a = " + a);
+
         return "index";
     }
 

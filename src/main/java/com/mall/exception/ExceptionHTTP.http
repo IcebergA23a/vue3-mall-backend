@@ -3,10 +3,14 @@
 GET http://localhost:10000/exceptionMethod
 Accept: application/json
 
-### GET request with NullPointerException
-GET http://localhost:10000/exceptionNullPointer
+### GET request with @ExceptionHandler
+GET http://localhost:10000/exceptionByExceptionHandler
 Accept: application/json
 
 ### GET request with SimpleMappingExceptionResolver
 GET http://localhost:10000/exceptionSimpleMappingExceptionResolver
+Accept: application/json
+
+### GET request with HandlerExceptionResolver
+GET http://localhost:10000/exceptionByHandlerExceptionResolver
 Accept: application/json
