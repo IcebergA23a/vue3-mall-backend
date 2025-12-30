@@ -52,7 +52,7 @@ public class MailController {
             </body>
         </html>
         """;
-        String filePath = "E:\\C语言书籍\\第一章 C语言概述.docx";
+        String filePath = "D:\\devproject\\web\\vue3-mall-backend\\file\\ef3689.png";
         mailService.sendAttachmentMail(
                 "xxxxxx@163.com",
                 "主题：带附件邮件",
@@ -65,7 +65,7 @@ public class MailController {
     @GetMapping("/sendInlineResourceMail")
     @ResponseBody
     public String sendInlineResourceMail() {
-        String rscPath = "D:\\me.jpg";
+        String rscPath = "D:\\devproject\\web\\vue3-mall-backend\\file\\mePicture.jpg";
         String rscId = "001";
         /*使用cid标注出静态资源*/
         String content = """

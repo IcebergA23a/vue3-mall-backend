@@ -5,3 +5,11 @@ Accept: application/json
 ### GET request with send Html Mail
 GET http://localhost:10000/email/sendHtmlMail
 Accept: application/json
+
+### GET request with send Attachment Mail
+GET http://localhost:10000/email/sendAttachmentMail
+Accept: application/json
+
+### GET request with send Picture Mail
+GET http://localhost:10000/email/sendInlineResourceMail
+Accept: application/json
