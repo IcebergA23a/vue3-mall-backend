@@ -6,10 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
+import java.io.File;
 
 /**
  * 使用Spring Boot 发送邮件
@@ -18,7 +21,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MailService {
-    private Logger log = LoggerFactory.getLogger(MailService.class);
+    private Logger logger = LoggerFactory.getLogger(MailService.class);
 
     // Spring Boot 提供了一个发送邮件的简单抽象，使用的是下面这个接口，这里直接注入即可使用
     @Autowired
@@ -63,10 +66,32 @@ public class MailService {
             // 发送
             mailSender.send(message);
             // 日志xinx
-            log.info("邮件已经发送");
+            logger.info("邮件已经发送");
         } catch (MessagingException e) {
-            log.error("发送邮件时发生异常！", e);
+            logger.error("发送邮件时发生异常！", e);
             throw new RuntimeException(e);
+        }
+    }
+
+    /* 带附件邮件*/
+    public void sendAttachmentMail(String to, String subject, String content, String filePath) {
+        logger.info("发送带附件邮件开始：{},{},{},{}", to, subject, content, filePath);
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper;
+        try {
+            helper = new MimeMessageHelper(message, true);
+            //true代表支持多组件，如附件，图片等
+            helper.setFrom(from);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(content, true);
+            FileSystemResource file = new FileSystemResource(new File(filePath));
+            String fileName = file.getFilename();
+            helper.addAttachment(fileName, file);//添加附件，可多次调用该方法添加多个附件
+            mailSender.send(message);
+            logger.info("发送带附件邮件成功");
+        } catch (MessagingException e) {
+            logger.error("发送带附件邮件失败", e);
         }
     }
 

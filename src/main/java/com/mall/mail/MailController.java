@@ -40,4 +40,25 @@ public class MailController {
         return "success";
     }
 
+    /** 测试发送带附件邮件 */
+    @GetMapping("/sendAttachmentMail")
+    @ResponseBody
+    public String sendAttachmentMail() {
+        String content = """
+        <html>
+            <body>
+                <h3><font color=\"red\">" + "大家好，这是springboot发送的HTML邮件，带有附件哦" + "</font>
+                </h3>
+            </body>
+        </html>
+        """;
+        String filePath = "E:\\C语言书籍\\第一章 C语言概述.docx";
+        mailService.sendAttachmentMail(
+                "xxxxxx@163.com",
+                "主题：带附件邮件",
+                content,
+                filePath);
+        return "success";
+    }
+
 }
