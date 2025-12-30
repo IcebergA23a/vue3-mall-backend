@@ -1,0 +1,3 @@
+### GET request with servlet
+GET http://localhost:8081/email/sendSimpleMail
+Accept: application/json
