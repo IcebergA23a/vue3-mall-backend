@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 /**
  * 测试发送邮件
@@ -14,9 +16,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/email")
 public class MailController {
-    /*注入发送邮件的接口*/
+    /* 注入发送邮件的接口 */
     @Autowired
     private MailService mailService;
+
+    /* TemplateEngine来对模板进行渲染 */
+    @Autowired
+    private TemplateEngine templateEngine;
 
     /** 测试发送文本邮件 */
     @GetMapping("/sendSimpleMail")
@@ -85,6 +91,20 @@ public class MailController {
                 rscPath,
                 rscId);
         return "success";
+    }
+
+    /**
+     * 指定模板发送邮件
+     */
+    @GetMapping("/sendTemplateMail")
+    @ResponseBody
+    public void sendTemplateMail() {
+        //向Thymeleaf模板传值，并解析成字符串
+        Context context = new Context();
+        context.setVariable("projectName", "vue3-mall-backend");
+        String emailContent = templateEngine.process("emailTemplate", context);
+
+        mailService.sendHtmlMail("xxxxxx@163.com", "这是一个模板文件", emailContent);
     }
 
 }

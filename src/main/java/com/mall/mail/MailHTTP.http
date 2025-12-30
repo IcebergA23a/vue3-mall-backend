@@ -13,3 +13,7 @@ Accept: application/json
 ### GET request with send Picture Mail
 GET http://localhost:10000/email/sendInlineResourceMail
 Accept: application/json
+
+### GET request with send Template Mail
+GET http://localhost:10000/email/sendTemplateMail
+Accept: application/json
