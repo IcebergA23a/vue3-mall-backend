@@ -61,4 +61,30 @@ public class MailController {
         return "success";
     }
 
+    /** 测试发送带图片邮件 */
+    @GetMapping("/sendInlineResourceMail")
+    @ResponseBody
+    public String sendInlineResourceMail() {
+        String rscPath = "D:\\me.jpg";
+        String rscId = "001";
+        /*使用cid标注出静态资源*/
+        String content = """
+                <html>
+                    <body>
+                        <h3>
+                            <font color=\"red\">" + "大家好，这是springboot发送的HTML邮件，有图片哦" + "</font>
+                        </h3>"
+                        <img src=\'cid:" + rscId + "\'>
+                    </body>
+                </html>
+                """;
+        mailService.sendInlineResourceMail(
+                "xxxxxx@163.com",
+                "主题：带附件邮件",
+                content,
+                rscPath,
+                rscId);
+        return "success";
+    }
+
 }

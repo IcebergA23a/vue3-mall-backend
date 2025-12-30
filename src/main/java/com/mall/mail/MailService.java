@@ -95,5 +95,27 @@ public class MailService {
         }
     }
 
+    /*发送带图片的邮件*/
+    public void sendInlineResourceMail(String to, String subject, String content, String rscPath, String rscId) {
+
+        logger.info("发送带图片邮件开始：{},{},{},{},{}", to, subject, content, rscPath, rscId);
+        MimeMessage message = mailSender.createMimeMessage();
+
+        MimeMessageHelper helper;
+        try {
+            helper = new MimeMessageHelper(message, true);
+            helper.setFrom(from);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(content, true);
+            FileSystemResource res = new FileSystemResource(new File(rscPath));
+            helper.addInline(rscId, res);//重复使用添加多个图片
+            mailSender.send(message);
+            logger.info("发送带图片邮件成功");
+        } catch (MessagingException e) {
+            logger.error("发送带图片邮件失败", e);
+        }
+    }
+
 
 }
