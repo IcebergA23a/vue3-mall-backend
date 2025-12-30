@@ -47,7 +47,7 @@ public class MailController {
         String content = """
         <html>
             <body>
-                <h3><font color=\"red\">" + "大家好，这是springboot发送的HTML邮件，带有附件哦" + "</font>
+                <h3><font color="red">大家好，这是springboot发送的HTML邮件，带有附件哦</font>
                 </h3>
             </body>
         </html>
@@ -72,9 +72,9 @@ public class MailController {
                 <html>
                     <body>
                         <h3>
-                            <font color=\"red\">" + "大家好，这是springboot发送的HTML邮件，有图片哦" + "</font>
-                        </h3>"
-                        <img src=\'cid:" + rscId + "\'>
+                            <font color="red">大家好，这是springboot发送的HTML邮件，有图片哦</font>
+                        </h3>
+                        <img src='cid:001'>
                     </body>
                 </html>
                 """;
