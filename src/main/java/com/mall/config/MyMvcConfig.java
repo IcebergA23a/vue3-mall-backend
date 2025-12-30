@@ -16,7 +16,7 @@ public class MyMvcConfig {
         return new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {
             @Override
             public void customize(ConfigurableWebServerFactory factory) {
-                factory.setPort(8081);
+                factory.setPort(10000);
             }
         };
     }

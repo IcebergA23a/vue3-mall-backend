@@ -1,11 +1,14 @@
 package com.mall.mail;
 
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 /**
@@ -40,6 +43,30 @@ public class MailService {
             mailSender.send(message);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void sendHtmlMail(String to, String subject, String content) {
+        // 获取 MimeMessage对象
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper;
+        try {
+            mimeMessageHelper = new MimeMessageHelper(message, true);
+            // 邮件发送
+            mimeMessageHelper.setFrom(from);
+            // 邮件接送人
+            mimeMessageHelper.setTo(to);
+            // 邮件主题
+            mimeMessageHelper.setSubject(subject);
+            // 邮件内容，HTML格式
+            mimeMessageHelper.setText(content, true);
+            // 发送
+            mailSender.send(message);
+            // 日志xinx
+            log.info("邮件已经发送");
+        } catch (MessagingException e) {
+            log.error("发送邮件时发生异常！", e);
+            throw new RuntimeException(e);
         }
     }
 

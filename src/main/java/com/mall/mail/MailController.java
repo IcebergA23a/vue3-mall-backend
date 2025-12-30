@@ -29,4 +29,15 @@ public class MailController {
         return "success";
     }
 
+    /** 测试发送HTML邮件 */
+    @GetMapping("/sendHtmlMail")
+    @ResponseBody
+    public String sendHtmlMail() {
+        mailService.sendHtmlMail(
+                "xxxxxx@163.com",
+                "主题：Html邮件",
+                "<h1>内容：</h1> <br/> <h2>第一封纯文本邮件</h2>");
+        return "success";
+    }
+
 }

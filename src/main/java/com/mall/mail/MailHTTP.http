@@ -1,3 +1,7 @@
-### GET request with servlet
-GET http://localhost:8081/email/sendSimpleMail
+### GET request with send Simple Mail
+GET http://localhost:10000/email/sendSimpleMail
+Accept: application/json
+
+### GET request with send Html Mail
+GET http://localhost:10000/email/sendHtmlMail
 Accept: application/json
