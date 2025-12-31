@@ -1,0 +1,38 @@
+### Post request with Save Book
+POST http://localhost:10000/mongo/save
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "论语",
+  "price": 33
+}
+
+
+### GET request with all Book
+GET http://localhost:10000/mongo/findAll
+Content-Type: application/json
+
+
+### GET request with  Book
+GET http://localhost:10000/mongo/findOneByName?name=论语
+Content-Type: application/json
+
+
+### Post request with Save Book
+POST http://localhost:10000/mongo/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "论语11"
+}
+
+
+### POST request with delete Book
+POST http://localhost:10000/mongo/delOne
+Content-Type: application/json
+
+{
+  "id": 1
+}

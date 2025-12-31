@@ -21,6 +21,10 @@ public class HandlerExceptionResolverImpl implements HandlerExceptionResolver {
         //判断不同异常类型，做不同视图跳转
         if(ex instanceof NumberFormatException){
             modelAndView.setViewName("error");
+        } else {
+            modelAndView.addObject("msg",
+                    "实现 HandlerExceptionResolver 接口处理:" + ex);
+            modelAndView.setViewName("error");
         }
 
         return modelAndView;
