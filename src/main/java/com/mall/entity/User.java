@@ -1,16 +1,18 @@
 package com.mall.entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private int id;
     private String name;
-    private String password;
+    private String pwd;
 
     private String address;
 
-    public User(int id, String name, String password, String address) {
+    public User(int id, String name, String pwd, String address) {
         this.id = id;
         this.name = name;
-        this.password = password;
+        this.pwd = pwd;
         this.address = address;
     }
 
@@ -30,12 +32,12 @@ public class User {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPwd() {
+        return pwd;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
 

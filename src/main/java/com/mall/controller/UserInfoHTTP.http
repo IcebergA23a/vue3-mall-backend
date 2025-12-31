@@ -1,0 +1,7 @@
+### GET request with all User info
+GET http://localhost:10000/userInfo/queryAll
+Accept: application/json
+
+### GET request with User info by ID
+GET http://localhost:10000/userInfo/findUserById?id=1
+Accept: application/json
