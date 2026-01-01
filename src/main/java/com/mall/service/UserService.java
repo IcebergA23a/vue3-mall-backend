@@ -54,4 +54,12 @@ public class UserService {
             return user;
         }
     }
+
+    public Integer addUser(User user) {
+        return userDao.addUser(user);
+    }
+
+    public Integer deleteUser(int id){
+        return userDao.deleteUser(id);
+    }
 }

@@ -1,0 +1,16 @@
+## 1 场景一：测试跨域， 请求由前端发起, Vue3 + axios, 这个地方只是记录和测试使用
+### GET request with all User info
+GET http://localhost:10000/userVue3/queryAll
+Accept: application/json
+
+### GET request with add User
+POST http://localhost:10000/userVue3/addUser
+Accept: application/json
+
+{
+
+}
+
+### GET request with delete User
+DELETE http://localhost:10000/userVue3/deleteUser?id=1
+Accept: application/json
