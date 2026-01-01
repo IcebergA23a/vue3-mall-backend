@@ -124,6 +124,18 @@
         </dependency>
 
 
+        <!-- 支持通过JDBC连接数据库 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.22</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
