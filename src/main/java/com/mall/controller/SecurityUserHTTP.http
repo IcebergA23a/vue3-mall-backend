@@ -1,0 +1,17 @@
+## 场景1:   owner 登录 访问，  只能访问 /owner， 不能访问 /admin
+### GET request with hello
+GET http://localhost:10000/owner/hello
+Accept: application/json
+
+### GET request with admin
+GET http://localhost:10000/admin/hello
+Accept: application/json
+
+## 场景2:   admin 登录 访问,  都可访问
+### GET request with hello
+GET http://localhost:10000/hello
+Accept: application/json
+
+### GET request with admin
+GET http://localhost:10000/admin/hello
+Accept: application/json
