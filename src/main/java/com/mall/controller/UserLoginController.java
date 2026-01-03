@@ -26,4 +26,16 @@ public class UserLoginController {
         return userLoginInfoService.getUserInfo(username);
     }
 
+
+    @PreAuthorize("hasAnyRole('user')") // 只能user角色才能访问该方法
+    @GetMapping("/userLogin/user")
+    public String user(){
+        return "hello,user";
+    }
+    @PreAuthorize("hasAnyRole('admin')") // 只能admin角色才能访问该方法
+    @GetMapping("/userLogin/admin")
+    public String admin(){
+        return "hello,admin";
+    }
+
 }
