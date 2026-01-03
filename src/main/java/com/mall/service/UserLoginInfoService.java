@@ -17,6 +17,8 @@ public class UserLoginInfoService {
     @Autowired
     private PasswordEncoder passwordEncoder;
     public int insertUser(UserLoginInfo userInfo){
+        // 加密密码
+        userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
         return userLoginDao.insertUserInfo(userInfo);
     }
 

@@ -21,14 +21,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserLoginInfoService userLoginInfoService;
-    @Autowired
-    private UserLoginDao userLoginDao;
-
-    /**
-     * 需新建配置类注册一个指定的加密方式Bean，或在下一步Security配置类中注册指定
-     */
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -44,11 +36,17 @@ public class CustomUserDetailsService implements UserDetailsService {
         authorities.add((GrantedAuthority) () -> "ROLE_" + role);
 
         // org.springframework.security.core.userdetails.
-        User result = new User(userLoginInfo.getUsername(),
-                // 数据库是明文的，这里需要加密
-                passwordEncoder.encode(userLoginInfo.getPassword()),
+//        User result = new User(userLoginInfo.getUsername(),
+//                // 数据库是明文的，这里需要加密
+//                passwordEncoder.encode(userLoginInfo.getPassword()),
+//                authorities
+//                );
+
+        User result1 = new User(userLoginInfo.getUsername(),
+                // 数据库存的是加密后的密码，不需要在加密
+                userLoginInfo.getPassword(),
                 authorities
-                );
-        return result;
+        );
+        return result1;
     }
 }

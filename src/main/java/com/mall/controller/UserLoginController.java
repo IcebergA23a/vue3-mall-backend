@@ -38,4 +38,10 @@ public class UserLoginController {
         return "hello,admin";
     }
 
+    @PreAuthorize("hasAnyRole('userpw')") // 只能userpw角色才能访问该方法
+    @GetMapping("/userLogin/userpw")
+    public String userpw(){
+        return "hello, user password";
+    }
+
 }

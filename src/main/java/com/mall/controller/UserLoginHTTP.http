@@ -20,3 +20,27 @@ Accept: application/json
 ### GET request with User info
 GET http://localhost:10000/userLogin/admin
 Accept: application/json
+
+## 场景: 密码加密保存
+## 测试： 新增一个用户 userpw，密码和用户名相同， userpw登录， 可以访问 /userLogin/userpw接口， 不能访问 /userLogin/admin接口
+### Send POST request with User json body
+POST http://localhost:10000/userLogin/addUser
+Content-Type: application/json
+
+{
+  "username": "userpw",
+  "password": "userpw",
+  "role": "userpw"
+}
+
+### GET request with User info
+GET http://localhost:10000/userLogin/getUser?username=user
+Accept: application/json
+
+### GET request with User info
+GET http://localhost:10000/userLogin/userpw
+Accept: application/json
+
+### GET request with User info
+GET http://localhost:10000/userLogin/admin
+Accept: application/json
