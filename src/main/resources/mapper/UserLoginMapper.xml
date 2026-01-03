@@ -8,4 +8,8 @@
         select id, username, password, role from user_login where username = #{username};
   </select>
 
+    <select id="getRolesByUserId" resultType="com.mall.entity.Role">
+        select * from role where id in(select rid from user_login_role where uid=#{uid});
+    </select>
+
 </mapper>

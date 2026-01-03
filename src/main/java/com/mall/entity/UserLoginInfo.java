@@ -23,6 +23,7 @@ public class UserLoginInfo implements Serializable, UserDetails {
 
     private String role;
 
+    private List<Role> roleList = new ArrayList<>();
 
     public UserLoginInfo(int id, String username, String password, String role) {
         this.id = id;
@@ -116,5 +117,13 @@ public class UserLoginInfo implements Serializable, UserDetails {
         this.role = role;
     }
 
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
 
 }

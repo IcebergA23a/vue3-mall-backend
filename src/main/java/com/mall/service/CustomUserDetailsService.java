@@ -1,9 +1,11 @@
 package com.mall.service;
 
 import com.mall.dao.UserLoginDao;
+import com.mall.entity.Role;
 import com.mall.entity.UserLoginInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,6 +24,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserLoginInfoService userLoginInfoService;
 
+    @Autowired
+    private UserLoginDao userLoginDao;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // 通过用户名从数据库获取用户信息
@@ -30,10 +35,19 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("用户不存在");
         }
 
-        String role = userLoginInfo.getRole();
+        userLoginInfo.setRoleList(userLoginDao.getRolesByUserId(userLoginInfo.getId()));
+
+
         // 角色集合
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add((GrantedAuthority) () -> "ROLE_" + role);
+//        String role = userLoginInfo.getRole();
+//        authorities.add((GrantedAuthority) () -> "ROLE_" + role);
+
+        for (Role role : userLoginInfo.getRoleList()) {
+            // 数据库中存储了 ROLE_ 前缀
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+
 
         // org.springframework.security.core.userdetails.
 //        User result = new User(userLoginInfo.getUsername(),

@@ -16,4 +16,6 @@ public interface UserLoginDao {
     // 添加用户
     @Insert("insert into user_login(username, password, role) value(#{username}, #{password}, #{role})")
     int insertUserInfo(UserLoginInfo userLoginInfo);
+
+    List<Role> getRolesByUserId(int id);
 }

@@ -44,3 +44,41 @@ Accept: application/json
 ### GET request with User info
 GET http://localhost:10000/userLogin/admin
 Accept: application/json
+
+
+## 场景: 用户角色多对多关系
+## 测试： 新增三个用户 root, admin, wangjia， 分别赋予不同角色
+### Send POST request with User json body
+POST http://localhost:10000/userLogin/addUser
+Content-Type: application/json
+
+{
+  "username": "root",
+  "password": "root",
+  "role": "root"
+}
+
+### Send POST request with User json body
+POST http://localhost:10000/userLogin/addUser
+Content-Type: application/json
+
+{
+"username": "admin",
+"password": "admin",
+"role": "admin"
+}
+
+### Send POST request with User json body
+POST http://localhost:10000/userLogin/addUser
+Content-Type: application/json
+
+{
+  "username": "wangjia",
+  "password": "wangjia",
+  "role": "wangjia"
+}
+
+###  测试： root登录， 可以访问 /userLogin/admin, /userLogin/dba接口, 不能访问 /userLogin/user接口
+### GET request with User info
+GET http://localhost:10000/userLogin/dba
+Accept: application/json

@@ -44,4 +44,11 @@ public class UserLoginController {
         return "hello, user password";
     }
 
+    @PreAuthorize("hasAnyRole('dba','admin')") // dba\admin角色可以访问该方法
+    @GetMapping("/userLogin/dba")
+    public String dba(){
+        return "hello,dba,admin";
+    }
+
+
 }
