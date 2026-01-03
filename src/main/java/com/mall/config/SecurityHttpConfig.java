@@ -15,8 +15,8 @@ import org.springframework.security.web.SecurityFilterChain;
  * @author bingshan
  * @since 2026/1/1 19:38
  */
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class SecurityHttpConfig {
 
 

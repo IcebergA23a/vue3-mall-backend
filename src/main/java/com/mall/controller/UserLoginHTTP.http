@@ -1,0 +1,14 @@
+### Send POST request with User json body
+POST http://localhost:10000/userLogin/addUser
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user",
+  "role": "user"
+}
+
+### GET request with User info
+GET http://localhost:10000/userLogin/getUser?username=user
+Accept: application/json
+
