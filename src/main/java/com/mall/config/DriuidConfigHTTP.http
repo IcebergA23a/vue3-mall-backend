@@ -1,4 +1,0 @@
-
-### GET request with Test Druid monitoring page
-GET http://localhost:10000/druid
-Accept: application/json

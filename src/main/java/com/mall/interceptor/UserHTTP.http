@@ -1,7 +1,0 @@
-### GET request with User info By Interceptor
-GET http://localhost:10000/getUser
-Accept: application/json
-
-### GET request with User info By Interceptor
-GET http://localhost:10000/getUser?token=123
-Accept: application/json
